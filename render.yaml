@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: caja-chica-financiera
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build && pip install -r requirements.txt
+    startCommand: gunicorn -w 4 -b 0.0.0.0:$PORT --timeout 1800 server:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: NODE_VERSION
+        value: 18
+    healthCheckPath: /api/health
+
