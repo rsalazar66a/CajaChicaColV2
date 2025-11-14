@@ -4,6 +4,8 @@ services:
     env: python
     region: oregon
     plan: free
+    # Forzar uso de configuración nativa, NO Docker
+    dockerfilePath: null
     buildCommand: npm install && npm run build && pip install --user -r requirements.txt
     startCommand: gunicorn -w 4 -b 0.0.0.0:$PORT --timeout 1800 server:app
     envVars:
@@ -14,4 +16,3 @@ services:
       - key: NODE_VERSION
         value: 18
     healthCheckPath: /api/health
-

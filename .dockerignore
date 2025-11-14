@@ -1,0 +1,5 @@
+# Este archivo previene que Render use Docker automáticamente
+# Render debe usar render.yaml en su lugar
+
+*
+
