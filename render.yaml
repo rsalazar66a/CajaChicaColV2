@@ -1,19 +1,12 @@
 services:
   - type: web
     name: caja-chica-financiera
-    env: python
+    env: docker
     region: oregon
     plan: free
-    # Forzar uso de configuración nativa, NO Docker
-    dockerfilePath: null
-    #buildCommand: apt-get update && apt-get install -y poppler-utils libzbar0 libopencv-dev python3-opencv tesseract-ocr tesseract-ocr-spa && npm install && npm run build && pip install -r requirements.txt
-    buildCommand: npm install && npm run build && pip install --upgrade pip setuptools wheel && pip install -r requirements.txt
-    startCommand: gunicorn -w 4 -b 0.0.0.0:$PORT --timeout 1800 server:app
+    dockerfilePath: Dockerfile
+    dockerContext: .
     envVars:
       - key: FLASK_ENV
         value: production
-      - key: PYTHON_VERSION
-        value: 3.11.0
-      - key: NODE_VERSION
-        value: 18
     healthCheckPath: /api/health
