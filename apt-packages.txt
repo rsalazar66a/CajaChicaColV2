@@ -1,7 +1,0 @@
-poppler-utils
-libzbar0
-libopencv-dev
-python3-opencv
-tesseract-ocr
-tesseract-ocr-spa
-

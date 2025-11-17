@@ -1,0 +1,16 @@
+poppler-utils
+libzbar0
+libopencv-dev
+python3-opencv
+tesseract-ocr
+tesseract-ocr-spa
+libjpeg-dev
+zlib1g-dev
+libtiff-dev
+libfreetype6-dev
+liblcms2-dev
+libwebp-dev
+libharfbuzz-dev
+libfribidi-dev
+libxcb1-dev
+

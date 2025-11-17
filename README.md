@@ -89,9 +89,14 @@ http://localhost:5000
 
 **Windows (Waitress):**
 ```bash
-pip install waitress
+# Activar entorno virtual primero
+.\venv\Scripts\Activate.ps1
+
+# Luego ejecutar waitress (ya está en requirements.txt)
 waitress-serve --host=0.0.0.0 --port=5000 server:app
 ```
+
+**Nota:** Si no tienes el entorno virtual activado, PowerShell no reconocerá el comando `waitress-serve`. Asegúrate de activar el entorno virtual primero.
 
 **Linux/Mac (Gunicorn):**
 ```bash
