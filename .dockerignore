@@ -1,5 +1,44 @@
-# Este archivo previene que Render use Docker automáticamente
-# Render debe usar render.yaml en su lugar
+# Archivos y directorios a excluir del contexto de Docker
+node_modules
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info
+dist
+build
+.git
+.gitignore
+.env
+.env.local
+*.log
+.DS_Store
+.vscode
+.idea
+*.swp
+*.swo
+*~
+uploads/*
+temp/*
+!uploads/.gitkeep
+!temp/.gitkeep
 
-*
+# Documentación (opcional, puedes comentar si quieres incluirlos)
+*.md
+!README.md
 
+# Archivos de configuración local
+Dockerfile.local
+deploy.bat
+deploy.sh
+start.bat
+start.sh
+
+# Archivos de Render (no necesarios en el contenedor)
+render.yaml
+apt.txt
+.python-version
