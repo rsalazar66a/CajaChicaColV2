@@ -29,8 +29,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
 # Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos de requisitos primero (para cache de Docker)
-COPY requirements.txt package.json package-lock.json* ./
+# Copiar todo el código primero
+COPY . .
 
 # Instalar dependencias de Python
 RUN pip install --upgrade pip setuptools wheel && \
@@ -38,9 +38,6 @@ RUN pip install --upgrade pip setuptools wheel && \
 
 # Instalar dependencias de Node.js
 RUN npm install
-
-# Copiar resto del código
-COPY . .
 
 # Construir frontend
 RUN npm run build
