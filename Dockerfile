@@ -4,6 +4,7 @@ FROM python:3.11-slim
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
     curl \
+    xz-utils \
     poppler-utils \
     libzbar0 \
     libopencv-dev \
@@ -22,10 +23,12 @@ RUN apt-get update && apt-get install -y \
     libzbar-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Instalar Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
+# Instalar Node.js (descargar directamente desde nodejs.org)
+RUN curl -fsSL https://nodejs.org/dist/v18.20.8/node-v18.20.8-linux-x64.tar.xz -o node.tar.xz && \
+    tar -xJf node.tar.xz -C /usr/local --strip-components=1 && \
+    rm node.tar.xz && \
+    ln -s /usr/local/bin/node /usr/bin/node && \
+    ln -s /usr/local/bin/npm /usr/bin/npm
 
 # Establecer directorio de trabajo
 WORKDIR /app
